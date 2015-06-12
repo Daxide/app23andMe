@@ -1,4 +1,3 @@
-
 options(shiny.maxRequestSize=30*1024^2)
 
 shinyServer(function(input, output) {
@@ -22,32 +21,53 @@ shinyServer(function(input, output) {
     
     #first SNP
   
+    
     rownumber=match('rs9375195',df$V1)#returns the first location of SNP
     
     
     translate <- c("A" = 1, "AA" = 2, "AC" = 1, "AG" = 1, "AT" = 1, "C" = 0, "CC" = 0, "CG" = 0, "CT" = 0, "DD" = 0, "DI" = 0, "G" = 0, "GG" = 0, "GT" = 0, "I" = 0, "II" = 0, "T" = 0, "TT" = 0)
     count1a=as.numeric(translate[as.character(df[rownumber, ]$V4)])  # same thing but with column name
-  
+    
     count1b=2-count1a
     
     #second SNP
     
-    rownumber=match('rs11588857',df$V1)#returns the first location of SNP
-   
+    if ('rs11588857' %in% df$V1) 
+    {rownumber=match('rs11588857',df$V1)#returns the first location of SNP
+    
     translate <- c("A" = 1, "AA" = 2, "AC" = 1, "AG" = 1, "AT" = 1, "C" = 0, "CC" = 0, "CG" = 0, "CT" = 0, "DD" = 0, "DI" = 0, "G" = 0, "GG" = 0, "GT" = 0, "I" = 0, "II" = 0, "T" = 0, "TT" = 0)
     count2a=as.numeric(translate[as.character(df[rownumber, ]$V4)])  # same thing but with column name
-
-    count2b=2-count2a
     
+    count2b=2-count2a}
+    
+    else
+    { rownumber=match('rs898388',df$V1)#returns the first location of SNP
+    
+    translate <- c("A" = 1, "AA" = 2, "AC" = 1, "AG" = 1, "AT" = 1, "C" = 0, "CC" = 0, "CG" = 0, "CT" = 0, "DD" = 0, "DI" = 0, "G" = 0, "GG" = 0, "GT" = 0, "I" = 0, "II" = 0, "T" = 0, "TT" = 0)
+    count2a=as.numeric(translate[as.character(df[rownumber, ]$V4)])  # same thing but with column name
+    
+    count2b=2-count2a
+    }
+     
     
     #third SNP
     
-    rownumber=match('rs11689201',df$V1)#returns the first location of SNP
-   
+    if ('rs11689201'%in% df$V1) {rownumber=match('rs11689201',df$V1)#returns the first location of SNP
+    
     translate <- c("A" = 0, "AA" = 0, "AC" = 0, "AG" = 1, "AT" = 0, "C" = 0, "CC" = 0, "CG" = 1, "CT" = 0, "DD" = 0, "DI" = 0, "G" = 1, "GG" = 2, "GT" = 1, "I" = 0, "II" = 0, "T" = 0, "TT" = 0)
     count3a=as.numeric(translate[as.character(df[rownumber, ]$V4)])  # same thing but with column name
-   
-    count3b=2-count3a
+    
+    count3b=2-count3a}
+    
+    else
+      
+    {rownumber=match('rs11686372',df$V1)#returns the first location of SNP
+    
+    translate <- c("A" = 1, "AA" = 2, "AC" = 1, "AG" = 1, "AT" = 1, "C" = 0, "CC" = 0, "CG" = 0, "CT" = 0, "DD" = 0, "DI" = 0, "G" = 0, "GG" = 0, "GT" = 0, "I" = 0, "II" = 0, "T" = 0, "TT" = 0)
+    count3a=as.numeric(translate[as.character(df[rownumber, ]$V4)])  # same thing but with column name
+    
+    count3b=2-count3a}  
+    
     
     #fourth SNP
     
@@ -63,17 +83,17 @@ shinyServer(function(input, output) {
     
     translate <- c("A" = 0, "AA" = 0, "AC" = 0, "AG" = 1, "AT" = 0, "C" = 0, "CC" = 0, "CG" = 1, "CT" = 0, "DD" = 0, "DI" = 0, "G" = 1, "GG" = 2, "GT" = 1, "I" = 0, "II" = 0, "T" = 0, "TT" = 0)
     count5a=as.numeric(translate[as.character(df[rownumber, ]$V4)])  # same thing but with column name
-   
+    
     count5b=2-count5a
     
     #sixth SNP
     
     rownumber=match('rs4251691',df$V1)#returns the first location of SNP
-   
+    
     
     translate <- c("A" = 0, "AA" = 0, "AC" = 1, "AG" = 0, "AT" = 0, "C" = 1, "CC" = 2, "CG" = 1, "CT" = 1, "DD" = 0, "DI" = 0, "G" = 0, "GG" = 0, "GT" = 0, "I" = 0, "II" = 0, "T" = 0, "TT" = 0)
     count6a=as.numeric(translate[as.character(df[rownumber, ]$V4)])  # same thing but with column name
- 
+    
     count6b=2-count6a
     
     
@@ -85,3 +105,22 @@ shinyServer(function(input, output) {
     
   })
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
